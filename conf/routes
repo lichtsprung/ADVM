@@ -1,0 +1,25 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+
+GET           /student/:id                  controllers.StudentManagement.getStudent(id: String)
+
+GET           /management/students          controllers.Application.studentManagement()
+
+GET           /management/programmes        controllers.Application.programmeManagement()
+
+POST          /student                      controllers.StudentManagement.student()
+
+POST          /student/:id                  controllers.StudentManagement.updateStudent(id: String)
+
+DELETE        /student/:id                  controllers.StudentManagement.removeStudent(id: String)
+
+
+
+# Enable webjar based resources to be returned
+GET           /webjars/*file                controllers.WebJarAssets.at(file)
+
+# Map the JS resource paths
+GET           /*file                        controllers.Assets.at(path="/public", file)
+
