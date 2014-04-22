@@ -20,6 +20,10 @@ object Application extends Controller {
     Ok(views.html.programme_management())
   }
 
+  def courseManagement = Action{
+    Ok(views.html.course_management())
+  }
+
 
 }
 

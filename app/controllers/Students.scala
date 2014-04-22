@@ -15,10 +15,10 @@ object Students {
 
   def all(): Iterable[Student] = for (st <- students) yield grater[Student].asObject(st)
 
-  def add(student: Student): Unit = {
+  def add(student: Student): String = {
     val dobj = grater[Student].asDBObject(student)
-    println(dobj)
     students.insert(dobj)
+    dobj.get("_id").asInstanceOf[ObjectId].toString
   }
 
   def remove(student: Student): Option[Student] = {

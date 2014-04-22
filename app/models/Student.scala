@@ -5,7 +5,6 @@ case class Student(
                     lastname: String,
                     registrationNumber: String,
                     id: String,
-                    groups: Set[String],
                     degreeProgramme: String
                     )
 

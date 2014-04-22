@@ -2,11 +2,11 @@
 <html>
     <head lang="en">
         <meta charset="UTF-8">
-        <title>Student Management</title>
+        <title>Course Management</title>
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     </head>
     <body ng-app="management_students" ng-controller="management_students_controller">
-        <h2>Add New Student</h2>
+        <h2>Add New Course</h2>
         <div id="student_input" class="container">
             @*
             New Student:
@@ -14,29 +14,17 @@
             - matriculation number
             - id (login)
             *@
-        <form id="student_addition" class="form-horizontal" role="form" novalidate>
+        <form id="course_addition" class="form-horizontal" role="form" novalidate>
             <div class="form-group">
-                <label for="student_firstname" class="col-sm-4 control-label">First name:</label>
+                <label for="course_name" class="col-sm-4 control-label">First name:</label>
                 <div>
-                    <input type="text" name="firstname" id="student_firstname" ng-model="add.firstname"/>
+                    <input type="text" name="name" id="student_first" ng-model="add.name"/>
                 </div>
             </div>
             <div class="form-group">
-                <label for="student_lastname" class="col-sm-4 control-label">Last name:</label>
-                <div>
-                    <input type="text" name="lastname" id="student_lastname" ng-model="add.lastname"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="matriculation_number" class="col-sm-4 control-label">Matriculation number:</label>
+                <label for="course_id" class="col-sm-4 control-label">Matriculation number:</label>
                 <div >
-                    <input type="text" name="registrationNumber" id="registrationNumber" ng-model="add.registrationNumber"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="student_id" class="col-sm-4 control-label">ID:</label>
-                <div>
-                    <input type="text" name="student_id" id="student_id" ng-model="add.id"/>
+                    <input type="text" name="course_id" id="course_id" ng-model="add.id"/>
                 </div>
             </div>
             <div class="form-group">
@@ -56,7 +44,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-6">
-                    <button type="submit" class="btn btn-info" ng-Click="addStudent(add)">Add</button>
+                    <button type="submit" class="btn btn-info" ng-Click="addCourse(add)">Add</button>
                 </div>
             </div>
         </form>
