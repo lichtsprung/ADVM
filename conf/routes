@@ -13,6 +13,8 @@ DELETE        /student/:id                  controllers.StudentManagement.remove
 
 GET           /students                     controllers.StudentManagement.listStudents()
 
+
+
 GET           /course/:id                   controllers.CourseManagement.getCourse(id: String)
 
 POST          /course                       controllers.CourseManagement.course()
@@ -22,6 +24,19 @@ POST          /course/:id                   controllers.CourseManagement.updateC
 DELETE        /course/:id                   controllers.CourseManagement.removeCourse(id: String)
 
 GET           /courses                      controllers.CourseManagement.listCourses()
+
+
+GET           /schedule/:id                   controllers.ScheduleManagement.getSchedule(id: String)
+
+POST          /schedule                       controllers.ScheduleManagement.schedule()
+
+POST          /schedule/:id                   controllers.ScheduleManagement.updateSchedule(id: String)
+
+DELETE        /schedule/:id                   controllers.ScheduleManagement.removeSchedule(id: String)
+
+GET           /schedules                      controllers.ScheduleManagement.listSchedules()
+
+
 
 GET           /management/students          controllers.Application.studentManagement()
 

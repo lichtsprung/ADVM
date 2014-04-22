@@ -2,22 +2,12 @@ package controllers
 
 import play.api.mvc.{Action, Controller}
 import play.api.libs.json._
-import models.Student
+import models.{Students, Student}
+import Students.Implicits._
 
 
 object StudentManagement extends Controller {
 
-  implicit val studentWrites = new Writes[Student] {
-    override def writes(student: Student): JsValue = Json.toJson(
-      Map(
-        "firstname" -> student.firstname,
-        "lastname" -> student.lastname,
-        "registrationNumber" -> student.registrationNumber,
-        "id" -> student.id,
-        "degreeProgramme" -> student.degreeProgramme
-      )
-    )
-  }
 
   def student = Action(parse.json) {
     request =>
@@ -65,10 +55,7 @@ object StudentManagement extends Controller {
   }
 
   def listStudents() = Action {
-
-    val json = Json.toJson(
-      Students.all().toList
-    )
+    val json = Json.toJson(Students.all())
     Ok(Json.stringify(json))
   }
 }

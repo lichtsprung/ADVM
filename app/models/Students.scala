@@ -1,16 +1,28 @@
-package controllers
+package models
 
-import com.mongodb.casbah.{MongoClient, MongoClientURI}
-
-import play.api.libs.json.Json
+import com.mongodb.casbah.MongoClient
 import com.mongodb.casbah.Imports._
 import com.novus.salat._
-import com.novus.salat.global._
-import models.Student
-import models.ctx
 import com.mongodb.casbah.commons.MongoDBObject
+import play.api.libs.json.{Json, JsValue, Writes}
+
+
 
 object Students {
+  object Implicits{
+    implicit val studentWrites = new Writes[Student] {
+      override def writes(student: Student): JsValue = Json.toJson(
+        Map(
+          "firstname" -> student.firstname,
+          "lastname" -> student.lastname,
+          "registrationNumber" -> student.registrationNumber,
+          "id" -> student.id,
+          "degreeProgramme" -> student.degreeProgramme
+        )
+      )
+    }
+  }
+
   private val students = MongoClient()("advm")("students")
 
   def all(): Iterable[Student] = for (st <- students) yield grater[Student].asObject(st)

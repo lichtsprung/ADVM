@@ -6,12 +6,11 @@ import models.Course
 
 
 object CourseManagement extends Controller{
-  implicit val studentWrites = new Writes[Course] {
+  implicit val courseWrites = new Writes[Course] {
     override def writes(course: Course): JsValue = Json.toJson(
       Map(
         "id" -> course.id,
-        "name" -> course.name,
-        "degreeProgrammes" -> Json.toJson(course.degreeProgrammes)
+        "name" -> course.name
       )
     )
   }
@@ -24,7 +23,7 @@ object CourseManagement extends Controller{
       val b = request.body
       val id = b \ "id"
       val name = b \ "name"
-      val programmes = (b \ "programmes").as[List[String]]
+      val programmes = Json.fromJson[List[String]](b \ "programmes").get
       println(programmes)
       Ok("")
   }
